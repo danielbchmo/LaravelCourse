@@ -1,6 +1,0 @@
-LARAVEL COURSE PROYECT
-(Remember install COMPOSER, XAMPP and NODE,JS)
-
-1. Start a LARAVEL proyect:
-    composer create-proyect laravel/laravel example-app
-
