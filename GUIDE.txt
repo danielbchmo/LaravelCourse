@@ -4,3 +4,28 @@ LARAVEL COURSE
 2. Create a new laravel project:
     composer create-project laravel/laravel <name>>
 
+----------------------- config .env -----------------------
+1. Access to .env file
+2. Found DB_DATABASE=laravel and modifies with:
+    DB_DATABASE=<name of your project>
+
+------------------------- migration ------------------------
+This part functions when we want to work whith our db and we want to create new tables.
+It's to say, we always will work with this folder if we modify anything of the db.
+
+1. /database/migration/
+2. In the terminal, type:
+    php artisan migrate
+With this, we'll go to migrate all our tables directly to the db.
+
+----------------------- model, controller and resource --------------
+With a command, we'll go to create a new model. Laravel will acommodate the controller and
+all the resources.
+
+1. php artisan make:model Empleado -mcr
+
+The new TABLE was created in migration folder.
+MODEL was create in /app/Models/.
+CONTROLLER was created in /app/http/Controllers/.
+
+If you need yo check more information about the type of value for 
