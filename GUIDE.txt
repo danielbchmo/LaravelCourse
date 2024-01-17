@@ -1,0 +1,6 @@
+LARAVEL COURSE
+
+1. Install composer, Node.js and Xampp.
+2. Create a new laravel project:
+    composer create-project laravel/laravel <name>>
+
