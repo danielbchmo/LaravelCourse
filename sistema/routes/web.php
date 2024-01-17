@@ -15,4 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+}); 
+
+// "." maining that you will access to all the files inside of employee
+// Route::get('/employee', function () {
+//     return view('employee.index');
+// }); 
+
