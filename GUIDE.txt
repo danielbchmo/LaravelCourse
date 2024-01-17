@@ -28,4 +28,14 @@ The new TABLE was created in migration folder.
 MODEL was create in /app/Models/.
 CONTROLLER was created in /app/http/Controllers/.
 
-If you need yo check more information about the type of value for 
+If you need yo check more information about the type of value, check:
+https://laravel.com/docs/10.x/migrations#column-method-string
+
+------------------------------ views folder --------------------------
+You can found it inside of /app/resources/views/
+It's all the code you can show in the design
+
+There're a specific folder where you'll be able to move the main design that the users will see.
+    /app/resources/routes/web.php
+
+To create a new view, you need to name that file as <name>.blade.php
