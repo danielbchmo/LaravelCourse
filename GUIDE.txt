@@ -69,5 +69,11 @@ You can check how many routes are active with the next command:
     php artisan route:list
 
 -------------------------- Creating a Form -----------------------------
+As an example, I used create.blade.php.
+
+////IMAGES and FILES////
+1. Call a form with post method.
+2. For calling img or files, you need a property call:
+    enctype='multipart/form-data'
 
 
