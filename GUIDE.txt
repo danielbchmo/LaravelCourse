@@ -39,3 +39,35 @@ There're a specific folder where you'll be able to move the main design that the
     /app/resources/routes/web.php
 
 To create a new view, you need to name that file as <name>.blade.php
+
+----------------------------Different way to access a route ----------------
+If you go to a contoller directly, you'll have many functions.
+One of them it's 'create', where you can return a view directly, but you'll need to import
+that controller file in web.php:
+
+1. To import:
+    use <route>
+    For example: App\Http\Controllers\EmpleadoController
+    (Note the first letter must be with uppercase)
+
+2. Inside of your controller file (in my case is EmpleadoController.php), put in a create function the next code:
+    return view('<your view file>');
+
+    For example:
+        return view('employee.create');
+
+3. Now, inside web.php file, code your route:
+    Route::get('/employee/create',[EmpleadoController::class,'create']);
+    (check web.php)
+
+When you want to access to all the routes, very simple, just code the next:
+    Route::resource('employee',EmpleadoController::class);
+
+Now, you'll be able to handle all the routes that exists in your app.
+
+You can check how many routes are active with the next command:
+    php artisan route:list
+
+-------------------------- Creating a Form -----------------------------
+
+

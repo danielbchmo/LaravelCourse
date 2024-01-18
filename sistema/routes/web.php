@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmpleadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 }); 
 
-// "." maining that you will access to all the files inside of employee
+//"." maining that you will access to all the files inside of employee
 // Route::get('/employee', function () {
 //     return view('employee.index');
 // }); 
 
+//       when the user access to url        class inside of the controller file
+// Route::get('/employee/create',[EmpleadoController::class,'create']);
+//                              Controller file             class' name
+
+//Access all the routes
+Route::resource('employee', EmpleadoController::class);
