@@ -1,19 +1,21 @@
 Creation Employee Form
-<form action="" method="post" enctype="multipart/form-data">
-    <label for="nombre">Nombre </label>
-    <input type="text" name="nombre"> <br>
+<form action=" {{ url('/employee') }} " method="post" enctype="multipart/form-data">
+    @csrf
 
-    <label for="appPaterno">Apellido Paterno </label>
-    <input type="text" name="appPaterno"> <br>
+    <label for="Nombre">Nombre </label>
+    <input type="text" name="Nombre"> <br>
 
-    <label for="appMaterno">Apellido Materno </label>
-    <input type="text" name="appMaterno"> <br>
+    <label for="ApellidoPaterno">Apellido Paterno </label>
+    <input type="text" name="ApellidoPaterno"> <br>
 
-    <label for="correo">Correo </label>
-    <input type="email" name="correo"> <br>
+    <label for="ApellidoMaterno">Apellido Materno </label>
+    <input type="text" name="ApellidoMaterno"> <br>
 
-    <label for="foto">Foto </label>
-    <input type="file" name="foto"> <br>
+    <label for="Correo">Correo </label>
+    <input type="email" name="Correo"> <br>
 
-    <input type="submit" name="enviar">
+    <label for="Foto">Foto </label>
+    <input type="file" name="Foto"> <br>
+
+    <input type="submit" value="Guardar datos">
 </form>

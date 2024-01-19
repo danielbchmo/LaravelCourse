@@ -29,7 +29,13 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //a variable just for testing
+        //$datos = request()->all();
+
+        //For security, we'll go to hide the token
+        $datos = request()->except('_token');
+        Empleado::insert( $datos );
+        return response()->json( $datos );
     }
 
     /**

@@ -76,4 +76,31 @@ As an example, I used create.blade.php.
 2. For calling img or files, you need a property call:
     enctype='multipart/form-data'
 
+-------------------------- Data recepton ------------------------------
+In your form, there're an 'action' part where you need to put what it'll be the behavior
+the page'll have.
 
+1. Code the rute you'll use:
+    <form action= {{url('/employee)}};
+
+2. Laravel gives us a tool for sharing or sending information. This's a secure key:
+    <form ....
+        @csrf
+
+3. In your controller file, in the store function, code the next:
+    //a variable for testing
+    $datos = request()->all();
+    return response()->json($datos);
+(With this you'll be able to check if your information is arriving, and with
+the secure key, the data is arriving with a token.)
+
+------------------------------ insert data -----------------------
+1. Insert data inside db:
+    //Receive all data except the token
+        $datos = request()->except('_token');
+
+    //Take Empleado model and insert them in the db
+        Empleado::insert( $datos );
+
+    //Show the information
+        return response()->json($datos);
