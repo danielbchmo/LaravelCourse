@@ -123,3 +123,17 @@ To insert a photo, it's necessary to create an IF:
 In this case, we need to use index function of your EmpleadoController.
 Also, we'll use index.blade.php
 
+1. Create a variable with the employee value.
+    //                           we'll take the five first records.
+    $datos['employees']=Empleado::paginate(5);
+
+2. Return the data inside of the 'return'.
+    return view('employee.index', $data);
+
+3. Go to index.blade.php
+
+4. You can create a design with bootstrap. The importa part of this is how we show the infor:
+    
+    @foreach ($employees as $employee)
+        <information that you'll show>
+    @endforeach
