@@ -137,3 +137,21 @@ Also, we'll use index.blade.php
     @foreach ($employees as $employee)
         <information that you'll show>
     @endforeach
+
+---------------------------- Delete data ---------------------------
+1. You need to create a new form:post that you'll add, in the action, and url
+    action={{ url('/empleado/'.$empleado->id)}}
+    (This code has to aim to ID.)
+    (Remember when you make a form, you have to create a key @csrf)
+
+2. Create DELETE method:
+    {{ method_field('DELETE') }}
+
+3. Go EmpleadoController.php and look for destroy function:
+    public function destroy($id)
+    {
+        Empleado::destroy($id);
+        return redirect('employee');
+    }
+
+-------------------------------- Edit ------------------------------

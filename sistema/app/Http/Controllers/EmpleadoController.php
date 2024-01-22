@@ -13,7 +13,7 @@ class EmpleadoController extends Controller
     public function index()
     {
         $data['empleados']=Empleado::paginate(5);
-        return view('empleado.index', $data);
+        return view('employee.index', $data);
     }
 
     /**
@@ -71,8 +71,9 @@ class EmpleadoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Empleado $empleado)
+    public function destroy($id)
     {
-        //
+        Empleado::destroy($id);
+        return redirect('employee');
     }
 }
