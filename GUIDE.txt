@@ -104,3 +104,22 @@ the secure key, the data is arriving with a token.)
 
     //Show the information
         return response()->json($datos);
+
+-------------------------- Add img --------------------------------------
+To insert a photo, it's necessary to create an IF:
+
+1. If the file that you're sending it has something, we'll modify the file's name.
+
+    if($request->hasFile('Foto')){
+        //datos is equal to foto's name, and store it in a function with name uploads in the folder public
+        $datos['Foto']=$request->file('Foto)->store('uploads','public');
+    }
+
+(You can access your file in:
+    /storage/app/public/uploads/    
+)
+
+----------------------------- Query data -------------------------------
+In this case, we need to use index function of your EmpleadoController.
+Also, we'll use index.blade.php
+

@@ -34,6 +34,11 @@ class EmpleadoController extends Controller
 
         //For security, we'll go to hide the token
         $datos = request()->except('_token');
+
+        if($request->hasFile('Foto')){
+            $datos['Foto']=$request->file('Foto')->store('uploads','public');
+        }
+
         Empleado::insert( $datos );
         return response()->json( $datos );
     }
