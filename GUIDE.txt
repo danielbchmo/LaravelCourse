@@ -154,4 +154,6 @@ Also, we'll use index.blade.php
         return redirect('employee');
     }
 
--------------------------------- Edit ------------------------------
+-------------------------------- Edit and update ----------------------------
+In this case, we'l use form.blade.php
+
