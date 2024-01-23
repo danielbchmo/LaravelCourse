@@ -1,4 +1,3 @@
-Show employees
 <table class="table table-light">
 
   <thead class="thead-light">
@@ -17,12 +16,21 @@ Show employees
     @foreach ($empleados as $empleado)
     <tr>
       <td>{{ $empleado->id }}</td>
-      <td>{{ $empleado->Foto }}</td>
+
+      <td>
+        <img src="{{ asset('storage').'/'.$empleado->Foto }}" alt="" width="100px">
+      </td>
+      
       <td>{{ $empleado->Nombre }}</td>
       <td>{{ $empleado->ApellidoPaterno }}</td>
       <td>{{ $empleado->ApellidoMaterno }}</td>
       <td>{{ $empleado->Correo }}</td>
-      <td>Editar |
+      <td>
+        
+        <a href="{{ url('/employee/'.$empleado->id.'/edit') }}">
+        Editar
+        </a>
+        |
 
         <form action="{{ url('/employee/'.$empleado->id) }} " method="post">
           @csrf

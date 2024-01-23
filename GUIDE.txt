@@ -157,3 +157,66 @@ Also, we'll use index.blade.php
 -------------------------------- Edit and update ----------------------------
 In this case, we'l use form.blade.php
 
+1. Everything we've done in create.blade.php, just the form part, copy and paste in
+form.blade.php
+
+2. Ans just include the form module in create.blade.php and edit.blade.php:
+    @include('employee.form');
+
+3. In edit.blade, you can add an "a" label and code:
+    <a href="{{ url('/employee/'.$empleado->id.'/edit') }}">
+
+4. Code a return in our Controller:
+    return view('employee.edit');
+
+5. In the controller, inside of edit function, code;:
+    //                  Find our search exactly
+    $empleado=Empleado::findOrFail($id);
+
+6. Our return'll be:
+    public function edit($id)
+    {
+        $empleado=Empleado::findOrFail($id);
+        return view('employee.edit', compact('empleado'));
+    }
+
+(In our HTML, we can add and value with the query
+    value="{{ $empleado->Nombre }}"
+)
+
+------------------------ Save new data ------------------------------
+Continue in edit.blade
+
+1. Code a new post form.
+    <form action="{{ url('/employee/'.$empleado->$id ) }}" method="post" enctype="multipart/form-data">
+        @call_user_func
+        {{ method_field('PATCH') }}
+
+        @include('employee.form')
+
+    </form>
+
+Now, controller, update function:
+1. public function update(Request $request, $id)
+    {
+        //                                  do not resect
+        $datos = request()->except(['_token','_method']);
+        //Update
+        Empleado::where('id','=',$id)->update($datos);
+
+        //reload
+        $empleado=Empleado::findOrFail($id);
+        return view('employee.edit', compact('empleado'));
+    }
+
+-------------------------- show img -----------------------------
+In index.blade
+
+1. In tbody, after of Foto seccion, put a img label with the next source:
+    //         allowing access to storage
+    <img src="{{ asset('storage').'/'.$empleado->Foto}}" alt="">
+
+2. Type the next command for connecting the storage with app:
+    php artisan storage:link
+
+3. 
