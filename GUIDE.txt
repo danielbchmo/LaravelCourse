@@ -219,4 +219,15 @@ In index.blade
 2. Type the next command for connecting the storage with app:
     php artisan storage:link
 
-3. 
+_______________ Modify IMG _______________
+We need to add a new class in the beggining of the code:
+    use Illuminate\Support\Facades\Storage;
+
+1. Copy the if function we did in storage, and paste inside of update, but we'll add new data:
+    if($request->hasFile('Foto')){
+        $empleado=Empleado::findOrFail($id);
+        //Delete information
+        Storage::delete('public/'.$empleado->Foto);
+        
+        $datos['Foto']=$request->file('Foto')->store('uploads','public');
+    }

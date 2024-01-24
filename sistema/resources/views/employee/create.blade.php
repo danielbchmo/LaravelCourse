@@ -1,5 +1,4 @@
-Creation Employee Form
 <form action=" {{ url('/employee') }} " method="post" enctype="multipart/form-data">
     @csrf
-    @include('employee.form');
+    @include('employee.form')
 </form>

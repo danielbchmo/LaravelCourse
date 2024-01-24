@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+
+//Class for deleting
+use Illuminate\Support\Facades\Storage;
 
 class EmpleadoController extends Controller
 {
@@ -68,6 +72,15 @@ class EmpleadoController extends Controller
     {
         //                                  do not resect
         $datos = request()->except(['_token','_method']);
+
+        if($request->hasFile('Foto')){
+            $empleado=Empleado::findOrFail($id);
+            //Delete information
+            Storage::delete('public/'.$empleado->Foto);
+
+            $datos['Foto']=$request->file('Foto')->store('uploads','public');
+        }
+
         //Update
         Empleado::where('id','=',$id)->update($datos);
 
