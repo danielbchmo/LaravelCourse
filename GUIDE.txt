@@ -231,3 +231,47 @@ We need to add a new class in the beggining of the code:
         
         $datos['Foto']=$request->file('Foto')->store('uploads','public');
     }
+
+----------------------------- Delete photo of Storage ---------------------
+In destroy function inside of your Controller
+
+1. Select which photo we go to delete:
+    $empleado=Empleado::findOrFail($id);
+
+2. If that photo exists, delete it:
+    if(Storage::delete('public/'.$empleado->Foto)){
+        Empleado::destroy($id);
+    }
+
+-------------------------- Show a confirmation message ----------------
+Go to index.blade, and copy this code:
+
+1. If there're a message, show it:
+    
+    @if(Session::has('mensaje'))
+    {{ Session::get('mensaje') }}
+    @endif
+
+2. In our controller, inside of store function:
+    
+    return redirect('employee')->with('mensaje','Empleado agregado con exito');
+
+(We'll already not return a json)
+
+--------------------------- Receive data -------------------------
+1. In edit.blade, edit:
+
+    @include('employee.form',['modo'='Editar']) 
+
+2. In create.blade, edit:
+
+    @include('employee.form',['modo'=>'Crear'])
+
+With this way, we can modify and receive data between forms.
+Now, you can edit, for example, the input value. If you had 'Save data', now you can:
+
+    value="{{ $modo }} data"
+
+When your form detect in which blade is, automatically it'll change the value name.
+
+--------------------- Bootstrap and login --------------------------
