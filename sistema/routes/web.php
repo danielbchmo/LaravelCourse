@@ -29,3 +29,6 @@ Route::get('/', function () {
 
 //Access all the routes
 Route::resource('employee', EmpleadoController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

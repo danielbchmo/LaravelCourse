@@ -275,3 +275,16 @@ Now, you can edit, for example, the input value. If you had 'Save data', now you
 When your form detect in which blade is, automatically it'll change the value name.
 
 --------------------- Bootstrap and login --------------------------
+1. Interface integration, code in terminal:
+    composer require laravel/ui
+
+2. To integrate bootstrap:
+    php artisan ui bootstrap --auth
+
+3. To install node:
+    npm install
+
+4. Run it:
+    npm run dev
+
+(Go localhost public and note your system already has a login)
