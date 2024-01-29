@@ -315,4 +315,21 @@ But, now we need to modify it the main route the user will enter:
 In this way, once the user is logging, when it reload the page, it'll continue there until finish the login.
 
 ---------------------- Using template -----------------------------
+In /resources/views/auth exists a login.blade. This code helps us for creating a
+template and keeping it in the top of our page.
 
+In this blade file, note and extends statement.
+
+1. In the login.blade, copy the first three linea of code:
+    @extends('layouts.app')
+
+    @section('content')
+    <div class="container">
+
+2. Paste them in index.blade, at the begining. At the bottom of the page,
+close the new label we created:
+
+    </div>
+    @endsection
+
+Now, check your current page, and note the design was created and adapted.
