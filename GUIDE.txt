@@ -333,3 +333,5 @@ close the new label we created:
     @endsection
 
 Now, check your current page, and note the design was created and adapted.
+
+3. Do the same steps with create, and edit.
