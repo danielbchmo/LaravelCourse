@@ -288,3 +288,31 @@ When your form detect in which blade is, automatically it'll change the value na
     npm run dev
 
 (Go localhost public and note your system already has a login)
+
+----------------------- Start Login -------------------------------
+In web.php
+
+1. Modify the main route:
+    Route::get('/', function () {
+        return view('auth.login');
+    });
+
+This is because when anyone accesses to our page, it'll be necessary they enter to login directly.
+
+2. Once the user is logging, we need to redirect it in the new index:
+    Route::group(['middleware' => 'auth'],function(){
+        Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
+    });
+
+3. Once before route we had, it was:
+    
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+But, now we need to modify it the main route the user will enter:
+    
+    Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
+
+In this way, once the user is logging, when it reload the page, it'll continue there until finish the login.
+
+---------------------- Using template -----------------------------
+

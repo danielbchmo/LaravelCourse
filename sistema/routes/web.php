@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EmpleadoController;
 
 /*
@@ -15,7 +16,7 @@ use App\Http\Controllers\EmpleadoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 }); 
 
 //"." maining that you will access to all the files inside of employee
@@ -31,4 +32,8 @@ Route::get('/', function () {
 Route::resource('employee', EmpleadoController::class);
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'],function(){
+    Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
+});
