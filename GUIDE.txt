@@ -349,4 +349,38 @@ With this, the system will respect the log.
     //          Inside put the rules you want to desappear.
     Auth::routes(['register'=>false,'reset'=>false]);
 
+( ----------------------- Add style with Bootstrap -------------------- )
+------------------------------ Data validation --------------------------
+In EmpleadoController.php
+
+1. Inside of store function:
+
+    $campos=[
+        'Nombre'=>'required|string|max:100',
+        'ApellidoPaterno'=>'required|string|max:100',
+        'ApellidoMaterno'=>'required|string|max:100',
+        'Correo'=>'required|email',
+        'Foto'=>'required|max:100|mimes:jpeg,png,jpg',
+    ];
+    $mensajeError=[
+        'required"=>"El :attribute es requerido',
+        'Foto.required'=>'Es necesario seleccionar una imagen',
+    ];
+
+    $this->validate($request,$campos,$mensajeError);
+
+This forces the fields to be filled out so as not to send an empty form.
+
+2. Now, in form.blade, we'll show the messages. Code at the beginning:
+
+    @if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li> {{ $error }} </li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
 
