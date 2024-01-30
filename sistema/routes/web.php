@@ -29,8 +29,8 @@ Route::get('/', function () {
 //                              Controller file             class' name
 
 //Access all the routes
-Route::resource('employee', EmpleadoController::class);
-Auth::routes();
+Route::resource('employee', EmpleadoController::class)->middleware('auth');
+Auth::routes(['register'=>false,'reset'=>false]);
 
 Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
 

@@ -335,3 +335,18 @@ close the new label we created:
 Now, check your current page, and note the design was created and adapted.
 
 3. Do the same steps with create, and edit.
+------------------------ Security settings ---------------------------
+In web.php
+
+1. In our route Route::resource('employee', EmpleadoController::class), we need to code:
+   
+    Route::resource('employee', EmpleadoController::class)->middleware('auth');
+
+With this, the system will respect the log.
+
+2. For desappear Register and Remember Password, in Auth::routes(), code:
+
+    //          Inside put the rules you want to desappear.
+    Auth::routes(['register'=>false,'reset'=>false]);
+
+
