@@ -40,15 +40,16 @@
       <td>{{ $empleado->Correo }}</td>
       <td>
         
-        <a href="{{ url('/employee/'.$empleado->id.'/edit') }}">
+        <a href="{{ url('/employee/'.$empleado->id.'/edit') }}"  
+        class="btn btn-warning" >
         Editar
         </a>
-        |
 
-        <form action="{{ url('/employee/'.$empleado->id) }} " method="post">
+        <form action="{{ url('/employee/'.$empleado->id) }} " method="post" class="d-inline">
           @csrf
           {{ method_field('DELETE') }}
-          <input type="submit" value="Borrar" onclick="return confirm('Quieres borrar?')">
+          <input type="submit" value="Borrar" onclick="return confirm('Quieres borrar?')"
+          class="btn btn-danger"/>
 
         </form>
 
