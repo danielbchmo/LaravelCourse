@@ -382,5 +382,18 @@ This forces the fields to be filled out so as not to send an empty form.
         </ul>
     </div>
     @endif
+------------------------------- recover old data ------------------------
+In form.blade
+In this part, when an user types its name but
+they do not type another filed, and they click on save it, it'll appears the error message, but
+where is the information going to?
 
+When the page reload for that error message, we'd like to appear the information again in the fields.
+
+1. In the value's input, inside of if ternary, in the empty part, we add:
+    
+    old('Nombre')
+
+    E.p.,
+    <input type="text" class="form-control" name="Nombre" value="{{ isset($empleado->Nombre)?$empleado->Nombre:old('Nombre') }}">
 
