@@ -31,7 +31,7 @@
 </div>
 
 <div class="form-group">
-    <label for="Foto">Foto </label>
+    <label for="Foto"></label>
     @if(isset($empleado->Foto))
         <img src=" {{ asset('storage').'/'.$empleado->Foto }} " alt="" width="100px">
     @endif

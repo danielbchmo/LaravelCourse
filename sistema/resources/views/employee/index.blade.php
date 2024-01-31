@@ -4,9 +4,19 @@
 <div class="container">
 <!---------------------->
 
+<!----------Message about DELETE or MODIFY successfully------------>
 @if(Session::has('mensaje'))
-{{ Session::get('mensaje') }}
+<div class="alert alert-success alert-dismissible" role="alert" id="liveAlertPlaceholder">
+  {{ Session::get('mensaje') }}
+
+
+<!-- <button type="button" class="close" data-dismiss="alert" arial-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button> -->
+
+</div>
 @endif
+<!----------------------------------------------------------------->
 
 <a href=" {{ url('employee/create') }}" class="btn btn-outline-dark">Registrar nuevo empleado</a>
 <br><br>

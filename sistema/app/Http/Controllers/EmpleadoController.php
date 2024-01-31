@@ -11,27 +11,21 @@ use Illuminate\Support\Facades\Storage;
 
 class EmpleadoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+//------------------------------------------------------------------------ INDEX -------------------------------------------------
     public function index()
     {
         $data['empleados']=Empleado::paginate(5);
         return view('employee.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+//------------------------------------------------------------------------ CREATE -------------------------------------------------
     public function create()
     {
         //
         return view('employee.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+//------------------------------------------------------------------------ STORE -------------------------------------------------
     public function store(Request $request)
     {
 
@@ -43,7 +37,7 @@ class EmpleadoController extends Controller
             'Foto'=>'required|max:100|mimes:jpeg,png,jpg',
         ];
         $mensajeError=[
-            'required"=>"El :attribute es requerido',
+            'required"=>":attribute',
             'Foto.required'=>'Es necesario seleccionar una imagen',
         ];
 
@@ -64,28 +58,40 @@ class EmpleadoController extends Controller
         return redirect('employee')->with('mensaje','Empleado agregado con exito');
     }
 
-    /**
-     * Display the specified resource.
-     */
+//------------------------------------------------------------------------ SHOW -------------------------------------------------
     public function show(Empleado $empleado)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+//------------------------------------------------------------------------ EDIT -------------------------------------------------
     public function edit($id)
     {
         $empleado=Empleado::findOrFail($id);
         return view('employee.edit', compact('empleado'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+//------------------------------------------------------------------------ UPDATE -------------------------------------------------
     public function update(Request $request, $id)
-    {
+    {   
+        $campos=[
+            'Nombre'=>'required|string|max:100',
+            'ApellidoPaterno'=>'required|string|max:100',
+            'ApellidoMaterno'=>'required|string|max:100',
+            'Correo'=>'required|email',
+        ];
+        $mensajeError=[
+            'required"=>":attribute',
+        ];
+
+        //just if you don't want to be obligatory the photo
+        if($request->hasFile('Foto')){
+            $campos=['Foto.required'=>'Es necesario seleccionar una imagen'];
+            $mensajeError=['Foto.required'=>'Es necesario seleccionar una imagen'];
+        }
+        
+        $this->validate($request,$campos,$mensajeError);
+
         //                                  do not resect
         $datos = request()->except(['_token','_method']);
 
@@ -102,12 +108,13 @@ class EmpleadoController extends Controller
 
         //reload
         $empleado=Empleado::findOrFail($id);
-        return view('employee.edit', compact('empleado'));
+
+        //return view('employee.edit', compact('empleado'));
+        return redirect('employee')->with('mensaje','Empleado actualizado exitosamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
+//------------------------------------------------------------------------ DESTROY -------------------------------------------------
     public function destroy($id)
     {   
         $empleado=Empleado::findOrFail($id);
