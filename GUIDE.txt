@@ -397,3 +397,21 @@ When the page reload for that error message, we'd like to appear the information
     E.p.,
     <input type="text" class="form-control" name="Nombre" value="{{ isset($empleado->Nombre)?$empleado->Nombre:old('Nombre') }}">
 
+----------------------- Pagination ----------------------------
+In app/Porivders/AppServiceProvider.php
+
+1. import:
+
+    use Illuminate\Pagination\Paginator;
+
+2. In boot function, code:
+
+    Paginator::useBootstrap();
+
+3. Now, in index.php, at the last part after of </table>, code:
+
+    {!! $empleados->links() !!}
+
+----------------------------- GREETING -----------------------------------
+Thanks for checking my little project! If you have any question or suggestion please don't hesitate to contact me.
+

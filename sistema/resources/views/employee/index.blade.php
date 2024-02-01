@@ -68,5 +68,9 @@
     @endforeach
   </tbody>
 </table>
+
+<!-- PAGINATION -->
+{!! $empleados->links() !!}
+
 </div>
 @endsection
