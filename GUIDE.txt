@@ -414,4 +414,3 @@ In app/Porivders/AppServiceProvider.php
 
 ----------------------------- GREETING -----------------------------------
 Thanks for checking my little project! If you have any question or suggestion please don't hesitate to contact me.
-
